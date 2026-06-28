@@ -10,7 +10,7 @@ Antes do mestrado, trabalhei com P&D em consultoria (G.A.C.) e no setor bancári
 
 📧 vitor.domeniquelli@gmail.com &nbsp;|&nbsp;
 [GitHub](https://github.com/vitor-domeniquelli) &nbsp;|&nbsp;
-[LinkedIn](https://www.linkedin.com/in/vitor-domeniquelli)
+[LinkedIn](https://www.linkedin.com/in/vdomeniquelli)
 
 ---
 
