@@ -1,20 +1,21 @@
-# Nome do site que aparece no topo
-site_name: Página Pessoal - Vitor Domeniquelli Chagas
-
-# Tema que vamos usar
+site_name: Vitor Domeniquelli Chagas
+ 
 theme:
   name: material
   palette:
-    # Esquema de cores (pode ser 'default' para claro ou 'slate' para escuro)
     scheme: slate
     primary: indigo
     accent: indigo
   features:
-    - navigation.tabs # Adiciona navegação por abas
-
-# Configuração do menu de navegação
+    - navigation.tabs
+    - navigation.top
+    - toc.integrate
+ 
 nav:
   - 'Início': 'index.md'
+  - 'Experiência': 'experiencia.md'
   - 'Projetos':
     - 'Detector de Vagas': 'projetos/detector-de-vagas.md'
     - 'Braço Robótico com ROS': 'projetos/braco-robotico-ros.md'
+    - 'Gêmeo Digital — Rocket Tank': 'projetos/digital-twin-rocket-tank.md'
+    - 'Sistema de Ground Truth com ArUco': 'projetos/camera-ground-truth.md'
