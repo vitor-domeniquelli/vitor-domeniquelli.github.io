@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vitor Domeniquelli Chagas | Robotics Researcher</title>
+  <meta name="description" content="Vitor Domeniquelli Chagas, Robotics Researcher and M.Sc. student in Applied Computing at UFABC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #EEF2F3;
+      --surface: #FFFFFF;
+      --ink: #16212B;
+      --muted: #56636F;
+      --line: #D4DCE0;
+      --accent: #0E6E6E;
+      --accent-ink: #FFFFFF;
+      --tag-bg: #E1ECEC;
+      --grid: rgba(14, 110, 110, 0.09);
+      --radius-lg: 14px;
+      --radius-sm: 6px;
+      --font: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0F171D;
+        --surface: #16222A;
+        --ink: #E6EDF0;
+        --muted: #9AA9B3;
+        --line: #26363F;
+        --accent: #3FB8B0;
+        --accent-ink: #0F171D;
+        --tag-bg: #1D3238;
+        --grid: rgba(63, 184, 176, 0.08);
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--accent); }
+    a:focus-visible, .btn:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ---------- Header ---------- */
+    .hero {
+      background-color: var(--surface);
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 32px 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 1rem;
+      max-width: 16ch;
+    }
+    .headline {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      color: var(--muted);
+      margin: 0 0 2rem;
+      max-width: 44ch;
+    }
+
+    /* Photo framed like a tracked target: corner brackets */
+    .photo-frame {
+      position: relative;
+      width: clamp(180px, 26vw, 260px);
+      aspect-ratio: 1;
+      padding: 14px;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      background: var(--tag-bg);
+    }
+    .photo-frame span {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border: 3px solid var(--accent);
+    }
+    .photo-frame .tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+    .photo-frame .tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+    .photo-frame .bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+    .photo-frame .br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+    /* ---------- Buttons ---------- */
+    .links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      background: var(--surface);
+      transition: background-color 0.15s, color 0.15s;
+    }
+    .btn:hover { background: var(--accent); color: var(--accent-ink); }
+    .btn.primary { background: var(--accent); color: var(--accent-ink); }
+    .btn.primary:hover { filter: brightness(1.1); }
+    .btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+    /* ---------- Sections ---------- */
+    section { padding: 4.5rem 0; }
+    section h2 {
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 1.75rem;
+      padding-left: 0.9rem;
+      border-left: 4px solid var(--accent);
+      line-height: 1.2;
+    }
+    .about p {
+      max-width: 68ch;
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    /* ---------- Projects ---------- */
+    .projects { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.75rem;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .card-img {
+      aspect-ratio: 16 / 10;
+      background: var(--tag-bg);
+      border-bottom: 1px solid var(--line);
+    }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.5rem;
+      flex: 1;
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      line-height: 1.3;
+      margin: 0;
+    }
+    .card dl { margin: 0; display: grid; gap: 0.85rem; }
+    .card dt {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+    .card dd { margin: 0.15rem 0 0; color: var(--ink); }
+    .tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .tags li {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--ink);
+    }
+    .card .btn { align-self: flex-start; margin-top: auto; }
+
+    /* ---------- Contact ---------- */
+    .contact p { margin: 0 0 1.5rem; color: var(--muted); max-width: 60ch; }
+    .contact-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .contact-list a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--ink);
+      word-break: break-word;
+    }
+    .contact-list a:hover { color: var(--accent); text-decoration: underline; }
+    .contact-list svg { width: 22px; height: 22px; fill: var(--accent); flex-shrink: 0; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 760px) {
+      .hero .wrap {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      .photo-frame { order: -1; width: 170px; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 3.25rem 0; }
+      .links .btn { flex: 1 1 auto; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Header -->
+  <header class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Vitor Domeniquelli Chagas</h1>
+        <p class="headline">Robotics Researcher | M.Sc. Student in Applied Computing (UFABC)</p>
+        <nav class="links" aria-label="Profiles">
+          <a class="btn primary" href="https://www.linkedin.com/in/vdomeniquelli" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="https://github.com/vitor-domeniquelli" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.2c-3.34.72-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.57A12 12 0 0 0 12 .3"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="mailto:vitor.domeniquelli@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 5-8-5V6l8 5 8-5v2.24z"/></svg>
+            Email
+          </a>
+        </nav>
+      </div>
+      <div class="photo-frame">
+        <img src="photo.jfif" alt="Photo of Vitor Domeniquelli Chagas">
+        <span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. About me -->
+    <section class="about" id="about">
+      <div class="wrap">
+        <h2>About me</h2>
+        <!-- TODO: confirm the wording of the lab technician sentence -->
+        <p>
+          I'm a master's student in Applied Computing at UFABC (Brazil), researching
+          robotics at the IARA++ lab: odometry, digital twins and multi-robot
+          systems with ROS 2. I also work as a lab technician at UFABC. I teach
+          robotics to beginners as a volunteer at IEEE RAS UFABC (RobotIEEE project,
+          1st place at the IEEE Brazil Council SAC Awards 2024) and teach the
+          Electronics module at Outcome School. Before my master's, I worked in
+          R&amp;D consulting and at Itaú bank, and did an academic exchange at the
+          Shibaura Institute of Technology, Japan.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. Projects -->
+    <section class="projects" id="projects">
+      <div class="wrap">
+        <h2>Projects</h2>
+        <div class="grid">
+
+          <!-- Project 1 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="project1.png" alt="Digital Twin of a Tracked Robot (ROS 2)" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3>Digital Twin of a Tracked Robot (ROS 2)</h3>
+              <dl>
+                <div>
+                  <dt>Problem</dt>
+                  <dd>Low-cost robots have poor odometry, which makes it hard to trust a digital twin of them.</dd>
+                </div>
+                <div>
+                  <dt>What I did</dt>
+                  <!-- TODO: add paper status, e.g. "Paper under submission / accepted at an IEEE journal." -->
+                  <dd>Built a digital twin for a low-cost tracked robot, with off-MCU odometry validated by an overhead ArUco camera.</dd>
+                </div>
+              </dl>
+              <!-- TODO: add remaining tools -->
+              <ul class="tags" aria-label="Tools used">
+                <li>ROS 2</li>
+                <li>Python</li>
+              </ul>
+              <!-- TODO: add link button (repo or paper) -->
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="project2.png" alt="Parking Spot Detector with Computer Vision" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3>Parking Spot Detector with Computer Vision</h3>
+              <dl>
+                <div>
+                  <dt>Problem</dt>
+                  <dd>Checking which parking spots are free, in real time, from images.</dd>
+                </div>
+                <!-- TODO: add "What I did" (your role / what you built) -->
+              </dl>
+              <ul class="tags" aria-label="Tools used">
+                <li>Python</li>
+                <li>OpenCV</li>
+              </ul>
+              <!-- TODO: add link button (repo) -->
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="project3.png" alt="Robotic Arm Simulation with ROS 2" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3>Robotic Arm Simulation with ROS 2</h3>
+              <dl>
+                <!-- TODO: add "Problem" (what the simulation was for) -->
+                <div>
+                  <dt>What I did</dt>
+                  <dd>Simulated a robotic arm with joint control and visualization in RViz.</dd>
+                </div>
+              </dl>
+              <!-- TODO: add remaining tools -->
+              <ul class="tags" aria-label="Tools used">
+                <li>ROS 2</li>
+                <li>RViz</li>
+              </ul>
+              <!-- TODO: add link button (repo) -->
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="project4.png" alt="ArUco Ground Truth Camera System" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3>ArUco Ground Truth Camera System</h3>
+              <dl>
+                <div>
+                  <dt>Problem</dt>
+                  <dd>Measuring where robots really are, to validate their odometry.</dd>
+                </div>
+                <div>
+                  <dt>What I did</dt>
+                  <dd>Built an embedded camera on a Raspberry Pi that tracks robots in real time with ArUco markers, integrated as a ROS 2 node.</dd>
+                </div>
+              </dl>
+              <ul class="tags" aria-label="Tools used">
+                <li>Raspberry Pi</li>
+                <li>OpenCV</li>
+                <li>ArUco</li>
+                <li>ROS 2</li>
+              </ul>
+              <!-- TODO: add link button (repo) -->
+            </div>
+          </article>
+
+          <!--
+            Link button template — paste inside .card-body, after the tags, once you have the URL:
+            <a class="btn" href="YOUR_URL" target="_blank" rel="noopener">View project</a>
+          -->
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Contact -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <ul class="contact-list">
+          <li>
+            <a href="mailto:vitor.domeniquelli@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 5-8-5V6l8 5 8-5v2.24z"/></svg>
+              vitor.domeniquelli@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/vdomeniquelli" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              linkedin.com/in/vdomeniquelli
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/vitor-domeniquelli" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.2c-3.34.72-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.83.57A12 12 0 0 0 12 .3"/></svg>
+              github.com/vitor-domeniquelli
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      &copy; <span id="year"></span> Vitor Domeniquelli Chagas
+    </div>
+  </footer>
+
+  <script>
+    // Current year in the footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // If an image file is missing, keep the layout clean instead of showing a broken icon
+    document.querySelectorAll(".card-img img, .photo-frame img").forEach(function (img) {
+      img.addEventListener("error", function () {
+        img.style.visibility = "hidden";
+      });
+    });
+  </script>
+</body>
+</html>
